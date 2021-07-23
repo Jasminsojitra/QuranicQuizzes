@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    x:Class="QuranicQuizzes.Views.LearnTabFlipQuranPage"
+    NavigationPage.HasNavigationBar="False"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xfFlipViewControl="clr-namespace:QuranicQuizzes.CustomControls"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    BackgroundColor="White"
+            xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:ffTransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" xmlns:htmlLabel="clr-namespace:LabelHtml.Forms.Plugin.Abstractions;assembly=HtmlLabel.Forms.Plugin" 
+            prism:ViewModelLocator.AutowireViewModel="True">
+    <Grid  VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" RowSpacing="0" IsVisible="{Binding isVisibleLayout}">
+         <Grid Margin="20,0,20,0" HorizontalOptions="CenterAndExpand">
+            <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+             <Frame Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="Start" CornerRadius="50"
+                   WidthRequest="100" HeightRequest="100" Margin="0" Padding="0" IsClippedToBounds="True">
+                <ffimageloading:CachedImage LoadingDelay="0"   WidthRequest="100" HeightRequest="100"
+                     Aspect="AspectFill"
+                    Source="{Binding CategoryImageURL}"
+                    HorizontalOptions="Start" VerticalOptions="Start"
+                    BackgroundColor="Transparent"  />
+            </Frame>
+            
+            <StackLayout Spacing="0"  Grid.Column="1">
+                <Label Text="{Binding TitleName}" MaxLines="5" LineBreakMode="TailTruncation" HorizontalOptions="StartAndExpand"
+               VerticalOptions="Start" 
+               FontFamily="{StaticResource QuranFontBold}"
+               Style="{StaticResource TextLargeStyle}" ></Label>
+                <material:MaterialButton  CornerRadius="10" 
+                                             Clicked="Reset_OnClicked"
+                                             Style="{StaticResource FlipPageButtonStyle}"
+                                                     HorizontalOptions="FillAndExpand" 
+                                             BackgroundColor="Red" FontFamily="{StaticResource QuranFontBold}" AllCaps="False"
+                                                     Padding="10,0,10,0" Text="Reset Progress" />
+                <material:MaterialButton  CornerRadius="10" 
+                                                     Command="{Binding CloseTap}"
+                                             Style="{StaticResource FlipPageButtonStyle}"
+                                                     HorizontalOptions="FillAndExpand"
+                                             BackgroundColor="Gray"  FontFamily="{StaticResource QuranFontBold}" AllCaps="False"
+                                                     Padding="10,0,10,0" Text="Close" Margin="0,0,0,10" />
+            </StackLayout>
+
+        </Grid>
+
+
+        <xfFlipViewControl:XFFlipView x:Name="XFFlipViewControl1" Grid.Row="1" >
+
+            <xfFlipViewControl:XFFlipView.FrontView>
+                <Frame
+                    Margin="30,0,30,0"
+                    Padding="0"
+                    BackgroundColor="Transparent"
+                    BorderColor="LightGray"
+                    CornerRadius="5"
+                    HasShadow="False"
+                    OutlineColor="Silver">
+                    <StackLayout Spacing="0" VerticalOptions="FillAndExpand">
+                        <StackLayout VerticalOptions="FillAndExpand" IsVisible="{Binding IsQuestionVisible}" IsEnabled="{Binding IsQuestionVisible}">
+                            <StackLayout VerticalOptions="FillAndExpand" IsVisible="{Binding IsnotSwitch}">
+                                <StackLayout VerticalOptions="Start">
+                                <StackLayout Spacing="0" Orientation="Horizontal" Margin="10,10,10,0">
+                                    <Label HorizontalOptions="Start" Text="{Binding TotalQuestionCount}"></Label>
+                                    <material:MaterialIcon IsVisible="{Binding IsSoundURL}" HorizontalOptions="EndAndExpand" TintColor="#70ad47"
+                                               Source="speaker.png">
+                                        <material:MaterialIcon.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding SoundTap}" />
+                                        </material:MaterialIcon.GestureRecognizers>
+                                    </material:MaterialIcon>
+                                </StackLayout>
+                                <BoxView HeightRequest="1" Color="Silver" />
+                            </StackLayout>
+
+                                <StackLayout  VerticalOptions="FillAndExpand" >
+                                <htmlLabel:HtmlLabel Margin="0,5,0,5" HorizontalTextAlignment="Center"
+                                                     VerticalOptions="StartAndExpand" TextColor="Black"
+                                         Style="{StaticResource TextLargeStyle}" FontFamily="{StaticResource QuranFontBold}"
+                                                     HorizontalOptions="FillAndExpand" Text="{Binding QuestionText}" />
+                                <Label Padding="0,-20,0,0"  FontSize="{ OnIdiom Phone=85,Tablet=85}"
+                           VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" TextColor="#2d137d"
+                                       FontFamily="{StaticResource ArabicFont}" HorizontalOptions="CenterAndExpand"
+                                       HorizontalTextAlignment="Center" Text="{Binding ImageText}" />
+                                <!--<StackLayout VerticalOptions="Center" IsVisible="{Binding IsImageURL}">
+                                    <ffimageloading:CachedImage LoadingDelay="0" Margin="10" x:Name="ImageData" IsEnabled="{Binding IsImageURL}"
+                                                    CacheDuration="30" RetryCount="3" Source="{Binding ImageURL}" HeightRequest="{OnIdiom Phone=180,Tablet=220}"
+                                                    WidthRequest="{OnIdiom Phone=200,Tablet=250}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                                                    BackgroundColor="Transparent" Aspect="Fill">
+                                    </ffimageloading:CachedImage>
+                                </StackLayout>-->
+                                <htmlLabel:HtmlLabel Margin="0,5,0,5" HorizontalTextAlignment="Center"
+                                                     VerticalOptions="End" TextColor="Black"
+                                         Style="{StaticResource TextLargeStyle}" FontFamily="{StaticResource QuranFontBold}"
+                                                     HorizontalOptions="FillAndExpand" Text="{Binding Transliteration}" />
+                                
+                            </StackLayout>
+                            </StackLayout>
+                            <!--Switch Order-->
+                            <StackLayout VerticalOptions="FillAndExpand" IsVisible="{Binding IsSwitch}">
+                                <StackLayout VerticalOptions="Start">
+                                <StackLayout Spacing="0" Orientation="Horizontal" Margin="10,10,10,0">
+                                    <Label HorizontalOptions="Start" Text="{Binding TotalQuestionCount}"></Label>
+                                </StackLayout>
+                                <BoxView HeightRequest="1" Color="Silver" />
+                            </StackLayout>
+
+                                <StackLayout VerticalOptions="FillAndExpand" >
+                                <htmlLabel:HtmlLabel Margin="0,5,0,5" HorizontalTextAlignment="Center"
+                                                     VerticalOptions="StartAndExpand" TextColor="Black"
+                                         Style="{StaticResource TextLargeStyle}" FontFamily="{StaticResource QuranFontBold}"
+                                                     HorizontalOptions="FillAndExpand" Text="In Arabic how do you say" />
+                                <Label IsVisible="{Binding IsEnglish}" Padding="0,0,0,0"  FontSize="50"
+                           VerticalOptions="FillAndExpand" VerticalTextAlignment="Start" TextColor="#2d137d"
+                                       FontFamily="{StaticResource QuranFontBold}" HorizontalOptions="CenterAndExpand"
+                                       HorizontalTextAlignment="Center" Text="{Binding AnswerText}" />
+
+                                    <Label IsVisible="{Binding IsUrdu}" Margin="0,5,0,5" HorizontalTextAlignment="Center"
+                                                 VerticalOptions="StartAndExpand"
+                                                 TextColor="#2d137d" FontSize="40"
+                                                 FontFamily="{StaticResource UrduFont}"
+                                                 VerticalTextAlignment="Center"
+                                                 HorizontalOptions="FillAndExpand" Text="{Binding AnswerText}" />
+                                    
+
+                                <!--<StackLayout VerticalOptions="Center" IsVisible="{Binding IsImageURL}">
+                                    <ffimageloading:CachedImage LoadingDelay="0" Margin="10" x:Name="ImageData" IsEnabled="{Binding IsImageURL}"
+                                                    CacheDuration="30" RetryCount="3" Source="{Binding ImageURL}" HeightRequest="{OnIdiom Phone=180,Tablet=220}"
+                                                    WidthRequest="{OnIdiom Phone=200,Tablet=250}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                                                    BackgroundColor="Transparent" Aspect="Fill">
+                                    </ffimageloading:CachedImage>
+                                </StackLayout>-->
+                                
+                                
+                            </StackLayout>
+                            </StackLayout>
+
+                            <StackLayout Spacing="0" BackgroundColor="Transparent" VerticalOptions="EndAndExpand">
+                                <BoxView HeightRequest="1" Color="Silver" />
+                                <material:MaterialButton VerticalOptions="CenterAndExpand"  x:Name="frontViewLabel" CornerRadius="10"
+                                                     Clicked="flipItButton_OnClicked" 
+                                             Style="{StaticResource FlipBottomButtonStyle}"
+                                                     HorizontalOptions="CenterAndExpand"
+                                             BackgroundColor="#5bc0de" FontFamily="{StaticResource QuranFontBold}" AllCaps="False"
+                                                      Text="Answer" />
+                            </StackLayout>
+                        </StackLayout>
+                        <StackLayout Spacing="0" VerticalOptions="FillAndExpand" IsEnabled="{Binding IsLastPageVisible}"
+                                 IsVisible="{Binding IsLastPageVisible}">
+                            <Label Margin="0,5,0,0" HorizontalTextAlignment="Center" VerticalOptions="CenterAndExpand"
+                                   TextColor="#17a2b8" Style="{StaticResource TextLargeStyle}"
+                                   FontFamily="{StaticResource QuranFontBold}" HorizontalOptions="FillAndExpand"
+                                   Text="END" />
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                                <Label Margin="0,5,0,5" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand"
+                                   TextColor="#007bff" Style="{StaticResource TextLargeStyle}"
+                                   FontFamily="{StaticResource QuranFontBold}" HorizontalOptions="FillAndExpand"
+                                   Text="Words Learnt:" />
+                                <Label Margin="0,5,0,5" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand"
+                                   TextColor="#007bff" Style="{StaticResource TextLargeStyle}"
+                                   FontFamily="{StaticResource QuranFontBold}" HorizontalOptions="FillAndExpand"
+                                   Text="{Binding LearnCount}" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                <Label Margin="0,5,0,5" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand"
+                                   TextColor="#28a745" Style="{StaticResource TextLargeStyle}"
+                                   FontFamily="{StaticResource QuranFontBold}" HorizontalOptions="FillAndExpand"
+                                   Text="Study Again:" />
+                                <Label Margin="0,5,0,5" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand"
+                                   TextColor="#28a745" Style="{StaticResource TextLargeStyle}"
+                                   FontFamily="{StaticResource QuranFontBold}" HorizontalOptions="FillAndExpand"
+                                   Text="{Binding StudyCount}" />
+                            </StackLayout>
+                            <StackLayout Spacing="0" BackgroundColor="Transparent" VerticalOptions="EndAndExpand">
+                                <BoxView HeightRequest="1" Color="Silver" />
+                                <material:MaterialButton Margin="5" CornerRadius="10"
+                                         Clicked="PlayAgain_OnClicked"
+                                             Style="{StaticResource FlipBottomButtonStyle}"
+                                                     HorizontalOptions="CenterAndExpand"
+                                             BackgroundColor="#5bc0de" FontFamily="{StaticResource QuranFontBold}"
+                                                         AllCaps="False"
+                                                      Text="Play Again" />
+                            </StackLayout>
+
+                        </StackLayout>
+                        <StackLayout Spacing="0" VerticalOptions="FillAndExpand" IsEnabled="{Binding IsQuestionNoAvailable}"
+                                 IsVisible="{Binding IsQuestionNoAvailable}">
+                            <Label Margin="0,5,0,0" HorizontalTextAlignment="Center" VerticalOptions="CenterAndExpand"
+                                   TextColor="Black" Style="{StaticResource TextLargeStyle}"
+                                   FontFamily="{StaticResource QuranFontBold}" HorizontalOptions="FillAndExpand"
+                                   Text="Alhumdulilah! You have learnt all words in this section. Please reset progress to start again." />
+                            
+                        </StackLayout>
+                    </StackLayout>
+
+                </Frame>
+            </xfFlipViewControl:XFFlipView.FrontView>
+
+            <xfFlipViewControl:XFFlipView.BackView>
+                <Frame
+                    BackgroundColor="Transparent"
+                    Margin="30,0,30,0"
+                    Padding="0"
+                    BorderColor="LightGray"
+                    CornerRadius="5"
+                    HasShadow="False"
+                    OutlineColor="Silver">
+                    <StackLayout VerticalOptions="FillAndExpand">
+
+                        <StackLayout IsVisible="{Binding IsnotSwitch}" VerticalOptions="FillAndExpand"  >
+                            <htmlLabel:HtmlLabel IsVisible="{Binding IsEnglish}" Margin="0,5,0,5" HorizontalTextAlignment="Center"
+                                                 VerticalOptions="CenterAndExpand"
+                                                 TextColor="#2d137d" Style="{StaticResource TextLargeHeaderStyle}"
+                                                 FontFamily="{StaticResource QuranFontBold}"
+                                                 VerticalTextAlignment="Center"
+                                                 HorizontalOptions="FillAndExpand" Text="{Binding AnswerText}" />
+
+                            <Label IsVisible="{Binding IsUrdu}" Margin="0,5,0,5" HorizontalTextAlignment="Center"
+                                                 VerticalOptions="CenterAndExpand"
+                                                 TextColor="#2d137d" FontSize="50"
+                                                 FontFamily="{StaticResource UrduFont}"
+                                                 VerticalTextAlignment="Center"
+                                                 HorizontalOptions="FillAndExpand" Text="{Binding AnswerText}" />
+                        </StackLayout>
+                        <!--swich order-->
+                        <StackLayout IsVisible="{Binding IsSwitch}" VerticalOptions="FillAndExpand"  >
+                            <StackLayout VerticalOptions="Start">
+                                <StackLayout Spacing="0" Orientation="Horizontal" Margin="10,10,10,0">
+                                    <Label HorizontalOptions="Start" Text="{Binding TotalQuestionCount}"></Label>
+                                    <material:MaterialIcon IsVisible="{Binding IsSoundURL}" HorizontalOptions="EndAndExpand" TintColor="#70ad47"
+                                               Source="speaker.png">
+                                        <material:MaterialIcon.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding SoundTap}" />
+                                        </material:MaterialIcon.GestureRecognizers>
+                                    </material:MaterialIcon>
+                                </StackLayout>
+                                <BoxView HeightRequest="1" Color="Silver" />
+                            </StackLayout>
+                             <Label Padding="0,-20,0,0"  FontSize="85"
+                           VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" TextColor="#2d137d"
+                                       FontFamily="{StaticResource ArabicFont}" HorizontalOptions="CenterAndExpand"
+                                       HorizontalTextAlignment="Center" Text="{Binding ImageText}" />
+                                <!--<StackLayout VerticalOptions="Center" IsVisible="{Binding IsImageURL}">
+                                    <ffimageloading:CachedImage LoadingDelay="0" Margin="10" x:Name="ImageData" IsEnabled="{Binding IsImageURL}"
+                                                    CacheDuration="30" RetryCount="3" Source="{Binding ImageURL}" HeightRequest="{OnIdiom Phone=180,Tablet=220}"
+                                                    WidthRequest="{OnIdiom Phone=200,Tablet=250}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                                                    BackgroundColor="Transparent" Aspect="Fill">
+                                    </ffimageloading:CachedImage>
+                                </StackLayout>-->
+                                <htmlLabel:HtmlLabel Margin="0,5,0,5" HorizontalTextAlignment="Center"
+                                                     VerticalOptions="EndAndExpand" TextColor="Black"
+                                         Style="{StaticResource TextLargeStyle}" FontFamily="{StaticResource QuranFontBold}"
+                                                     HorizontalOptions="FillAndExpand" Text="{Binding Transliteration}" />
+                                
+                        </StackLayout>
+
+                        <StackLayout BackgroundColor="Transparent" Spacing="0" VerticalOptions="End">
+                            <BoxView HeightRequest="1" Color="Silver" />
+                            <Grid Margin="5" ColumnSpacing="15">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="50*" />
+                                                    <ColumnDefinition Width="50*" />
+                                                </Grid.ColumnDefinitions>
+                                                <Frame Grid.Column="0" CornerRadius="5" HasShadow="False" BackgroundColor="Transparent" BorderColor="Blue"
+                                                           Padding="5,8,5,8" HorizontalOptions="FillAndExpand">
+                                                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand"  >
+                                                        <material:MaterialLabel  FontFamily="{StaticResource QuranFontBold}"
+                                                                                Text="Study Again" VerticalTextAlignment="Center"
+                                                                                 Style="{StaticResource TextBodyStyle}" TextColor="Blue"
+                                                                                 FontAttributes="Bold" />
+                                                        <material:MaterialIcon Source="Learn.png" TintColor="Blue" IsVisible="{Binding IsLearnTabFree}"/>
+                                                        
+                                                        
+                                                    </StackLayout>
+                                                    <Frame.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="StudyAgain_OnClicked" />
+                                                    </Frame.GestureRecognizers>
+                                                </Frame>
+                                                <Frame Grid.Column="1" CornerRadius="5" HasShadow="False"  BorderColor="Green" BackgroundColor="Transparent"
+                                                           Padding="5,8,5,8" HorizontalOptions="FillAndExpand" >
+                                                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
+                                                         <material:MaterialLabel  FontFamily="{StaticResource QuranFontBold}"
+                                                                                Text="Got It" VerticalTextAlignment="Center"
+                                                                                 Style="{StaticResource TextBodyStyle}" TextColor="Green" FontAttributes="Bold" />
+                                                        <material:MaterialIcon Source="done.png" TintColor="Green" />
+                                                    </StackLayout>
+                                                    <Frame.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="GotIt_OnClicked" />
+                                                    </Frame.GestureRecognizers>
+                                                </Frame>
+                                            </Grid>  
+                            <!--<Grid>
+                                <material:MaterialButton Margin="5" Grid.Column="0" x:Name="backViewLabel" CornerRadius="10"
+                                                     Clicked="StudyAgain_OnClicked" ButtonType="Outlined"
+                                             Style="{StaticResource FlipBottomButtonStyle}" BorderColor="Blue"
+                                                     HorizontalOptions="FillAndExpand" TextColor="Blue"
+                                              FontFamily="{StaticResource QuranFontBold}" AllCaps="False"
+                                                     Padding="0,0,0,0" Text="Study Again" />
+                                <material:MaterialButton Margin="5"  Grid.Column="1" CornerRadius="10" 
+                                                ButtonType="Outlined" TextColor="Green" Clicked="GotIt_OnClicked" 
+                                             Style="{StaticResource FlipBottomButtonStyle}"
+                                                     HorizontalOptions="FillAndExpand" BorderColor="Green"
+                                              FontFamily="{StaticResource QuranFontBold}" 
+                                                     Padding="0,0,0,0" Text="Got It" />
+                                               
+                            </Grid>-->
+                            <BoxView HeightRequest="1" Color="Silver" />
+                            <material:MaterialButton  CornerRadius="10"
+                                                     Clicked="flipItButton_OnClicked" 
+                                             Style="{StaticResource FlipBottomButtonStyle}"
+                                                     HorizontalOptions="CenterAndExpand"
+                                             BackgroundColor="#5bc0de" FontFamily="{StaticResource QuranFontBold}" AllCaps="False"
+                                                     Padding="20,0,20,0" Text="Question" />
+                        </StackLayout>
+                    </StackLayout>
+
+                </Frame>
+            </xfFlipViewControl:XFFlipView.BackView>
+
+        </xfFlipViewControl:XFFlipView>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="350" />
+        </Grid.RowDefinitions>
+    </Grid>
+
+</ContentPage>

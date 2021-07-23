@@ -1,0 +1,86 @@
+﻿<Properties StartupConfiguration="{34A59F1A-2F0B-4E25-B56F-433AA23228CB}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="QuranicQuizzes/QuranicQuizzes/Views/SubscribePage.xaml.cs">
+    <Files>
+      <File FileName="QuranicQuizzes/QuranicQuizzes.Android/MainActivity.cs" Line="19" Column="33" />
+      <File FileName="QuranicQuizzes/QuranicQuizzes.Android/Properties/AndroidManifest.xml" />
+      <File FileName="QuranicQuizzes/QuranicQuizzes/Views/SignupPage.xaml" />
+      <File FileName="QuranicQuizzes/QuranicQuizzes/Views/SignupPage.xaml.cs" />
+      <File FileName="QuranicQuizzes/QuranicQuizzes/ViewModels/SignupPageViewModel.cs" />
+      <File FileName="QuranicQuizzes/QuranicQuizzes/ViewModels/LoginPageViewModel.cs" />
+      <File FileName="QuranicQuizzes/QuranicQuizzes/App.xaml.cs" />
+      <File FileName="QuranicQuizzes/QuranicQuizzes/Views/MainPage.xaml.cs" Line="72" Column="131" />
+      <File FileName="QuranicQuizzes/QuranicQuizzes/ViewModels/MainPageViewModel.cs" />
+      <File FileName="QuranicQuizzes/QuranicQuizzes/Interfaces/IClientAPI.cs" />
+      <File FileName="QuranicQuizzes/QuranicQuizzes/Helpers/ClientAPI.cs" />
+      <File FileName="QuranicQuizzes/QuranicQuizzes/Helpers/UserSettings.cs" />
+      <File FileName="QuranicQuizzes/QuranicQuizzes.iOS/AppDelegate.cs" Line="165" Column="75" />
+      <File FileName="QuranicQuizzes/QuranicQuizzes.iOS/Info.plist" />
+      <File FileName="QuranicQuizzes/QuranicQuizzes/Helpers/GlobalConst.cs" />
+      <File FileName="QuranicQuizzes/QuranicQuizzes/Views/LoginPage.xaml" />
+      <File FileName="QuranicQuizzes/QuranicQuizzes/Views/LoginPage.xaml.cs" Line="1" Column="1" />
+      <File FileName="QuranicQuizzes/QuranicQuizzes/Models/Login.cs" />
+      <File FileName="QuranicQuizzes/QuranicQuizzes/ViewModels/ViewModelBase.cs" />
+      <File FileName="QuranicQuizzes/QuranicQuizzes/ViewModels/SubscribePageViewModel.cs" />
+      <File FileName="QuranicQuizzes/QuranicQuizzes/ViewModels/QuizzesBySubCategoriesPageViewModel.cs" />
+      <File FileName="QuranicQuizzes/QuranicQuizzes/App.xaml" />
+      <File FileName="QuranicQuizzes/QuranicQuizzes/Views/HomePage.xaml" />
+      <File FileName="QuranicQuizzes/QuranicQuizzes/Views/HomePage.xaml.cs" Line="13" Column="26" />
+      <File FileName="QuranicQuizzes/QuranicQuizzes/ViewModels/HomePageViewModel.cs" />
+      <File FileName="QuranicQuizzes/QuranicQuizzes/ViewModels/QuizzesbyCategoryPageViewModel.cs" />
+      <File FileName="QuranicQuizzes/QuranicQuizzes/Views/Signup_Login_HomePage.xaml" />
+      <File FileName="QuranicQuizzes/QuranicQuizzes/Models/ErrorData.cs" />
+      <File FileName="QuranicQuizzes/QuranicQuizzes/Views/MainPage.xaml" />
+      <File FileName="QuranicQuizzes/QuranicQuizzes.iOS/Helpers/Toast_IOS.cs" />
+      <File FileName="QuranicQuizzes/QuranicQuizzes/Interfaces/IToast.cs" />
+      <File FileName="QuranicQuizzes/QuranicQuizzes/obj/Debug/netstandard2.0/Views/HomePage.xaml.g.cs" Line="17" Column="26" />
+      <File FileName="QuranicQuizzes/QuranicQuizzes/Views/SubscribePage.xaml.cs" Line="16" Column="33" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="QuranicQuizzes" expanded="True">
+            <Node name="QuranicQuizzes" expanded="True">
+              <Node name="Dependencies" expanded="True">
+                <Node name="PackageDependencies" expanded="True" />
+              </Node>
+              <Node name="Helpers" expanded="True" />
+              <Node name="Interfaces" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="ViewModels" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="HomePage.xaml" expanded="True" />
+                <Node name="LoginPage.xaml" expanded="True" />
+                <Node name="MainPage.xaml" expanded="True" />
+                <Node name="SubscribePage.xaml" expanded="True">
+                  <Node name="SubscribePage.xaml.cs" selected="True" />
+                </Node>
+              </Node>
+              <Node name="App.xaml" expanded="True" />
+            </Node>
+            <Node name="QuranicQuizzes.Android" expanded="True" />
+            <Node name="QuranicQuizzes.iOS" expanded="True">
+              <Node name="Helpers" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.QuranicQuizzes.iOS automaticSigning="False" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.B79C4334-2091-4385-829A-90118AC5DCB3" Xamarin.HotReload.WrongLinkerErrorInfoBar.QuranicQuizzes.iOS.HideInfoBar="True" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.ItemProperties.QuranicQuizzes.Android AndroidDesignerPreferredDevice="Nexus 4" TriggeredFromHotReload="False" Xamarin.HotReload.UnhandledDeviceException.QuranicQuizzes.Android.HideInfoBar="True" PreferredExecutionTarget="Android.Pixel_3a_API_30_x86" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/imac/Documents/Project/Xamarin/QuranicQuizzes/NEW/QuranicQuizzes/QuranicQuizzes/QuranicQuizzes/ViewModels/LearnTabPageViewModel.cs" relfile="QuranicQuizzes/QuranicQuizzes/ViewModels/LearnTabPageViewModel.cs" line="227" column="1" />
+      <Breakpoint file="/Users/imac/Documents/Project/Xamarin/QuranicQuizzes/NEW/QuranicQuizzes/QuranicQuizzes/QuranicQuizzes/ViewModels/PlayTabPageViewModel.cs" relfile="QuranicQuizzes/QuranicQuizzes/ViewModels/PlayTabPageViewModel.cs" line="480" column="1" />
+      <Breakpoint file="/Users/imac/Documents/Project/Xamarin/QuranicQuizzes/NEW/QuranicQuizzes/QuranicQuizzes/QuranicQuizzes/Views/LearnTabFlipPage.xaml.cs" relfile="QuranicQuizzes/QuranicQuizzes/Views/LearnTabFlipPage.xaml.cs" line="34" column="1" />
+      <Breakpoint file="/Users/imac/Documents/Project/Xamarin/QuranicQuizzes/NEW/QuranicQuizzes/QuranicQuizzes/QuranicQuizzes/ViewModels/LearnTabFlipPageViewModel.cs" relfile="QuranicQuizzes/QuranicQuizzes/ViewModels/LearnTabFlipPageViewModel.cs" line="561" column="1" />
+      <Breakpoint file="/Users/imac/Documents/Project/Xamarin/QuranicQuizzes/NEW/QuranicQuizzes/QuranicQuizzes/QuranicQuizzes/ViewModels/QuizzesbyCategoryPageViewModel.cs" relfile="QuranicQuizzes/QuranicQuizzes/ViewModels/QuizzesbyCategoryPageViewModel.cs" line="397" column="1" />
+      <Breakpoint file="/Users/imac/Documents/Project/Xamarin/QuranicQuizzes/NEW/QuranicQuizzes/QuranicQuizzes/QuranicQuizzes/Views/LearTabFlipWebViewPage.xaml.cs" relfile="QuranicQuizzes/QuranicQuizzes/Views/LearTabFlipWebViewPage.xaml.cs" line="30" column="1" />
+      <Breakpoint file="/Users/imac/Documents/Project/Xamarin/QuranicQuizzes/NEW/QuranicQuizzes/QuranicQuizzes/QuranicQuizzes/ViewModels/LearnTabQuranQuestionSelectionPageViewModel.cs" relfile="QuranicQuizzes/QuranicQuizzes/ViewModels/LearnTabQuranQuestionSelectionPageViewModel.cs" line="191" column="1" />
+      <Breakpoint file="/Users/imac/Documents/Project/Xamarin/QuranicQuizzes/NEW/QuranicQuizzes/QuranicQuizzes/QuranicQuizzes/ViewModels/LearnTabFlipPageQuranViewModel.cs" relfile="QuranicQuizzes/QuranicQuizzes/ViewModels/LearnTabFlipPageQuranViewModel.cs" line="776" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

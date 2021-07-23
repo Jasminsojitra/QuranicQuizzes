@@ -1,0 +1,408 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    NavigationPage.HasNavigationBar="False"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:ffTransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" xmlns:customcontrols="clr-namespace:QuranicQuizzes.CustomControls" xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+    x:Class="QuranicQuizzes.Views.LearnTabQuranQuestionSelectionPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="20,20,20,0" >
+                <StackLayout Margin="10,0,10,0">
+
+                
+                    <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+
+                                            <ffimageloading:CachedImage LoadingDelay="0"
+                                                                       WidthRequest="{OnIdiom Phone=60,Tablet=70}"
+                                                                   HeightRequest="{OnIdiom Phone=60,Tablet=70}"
+                                                                        Source="{Binding CategoryImageURL}"
+                                                                   HorizontalOptions="Start" VerticalOptions="Start"
+                                                                        BackgroundColor="Transparent" Aspect="Fill" >
+                                                <ffimageloading:CachedImage.Transformations>
+                                                    <ffTransformations:CircleTransformation />
+                                                </ffimageloading:CachedImage.Transformations>
+
+                                            </ffimageloading:CachedImage>
+                                                <Label Text="Flashcards Chapters"  HorizontalOptions="StartAndExpand"
+               VerticalOptions="Center" 
+               FontFamily="{StaticResource QuranFontBold}"
+               Style="{StaticResource TextLargeStyle}" ></Label>
+                                        </StackLayout>
+
+                <Frame BackgroundColor="Transparent" HasShadow="False" Padding="0" BorderColor="#A9AFB6"
+                       Margin="0,10,0,0" CornerRadius="2">
+                    <StackLayout BackgroundColor="Transparent" Orientation="Horizontal" Spacing="0"
+                                 HorizontalOptions="FillAndExpand">
+                                <customcontrols:CustomPicker 
+                            x:Name="pickerHeader"
+                            Title="Select Surah"
+                                     Style="{StaticResource TextBodyStyle}"
+                                    Margin="{OnPlatform Android='5,0,0,0'}"
+                                TitleColor="Black"
+                                TextColor="Black"
+                                HorizontalOptions="FillAndExpand"
+                                BackgroundColor="Transparent"
+                                FontFamily="{StaticResource QuranFont}"
+                                SelectedIndex="{Binding SelectedIndexLvSurah}"
+                                ItemsSource="{Binding LvSurah}"
+                                ItemDisplayBinding="{ Binding FinalName}"
+                                SelectedItem="{Binding SelectedItemLvSurah}" >
+
+                                </customcontrols:CustomPicker>
+
+                                <material:MaterialIconButton TintColor="Black" PressedBackgroundColor="Transparent"
+                                                               x:Name="btnDropDownpickerHeader" Clicked="btnDropDownpickerHeader_Clicked"
+                                                             BackgroundColor="Transparent" Image="dropdown_arrow.png"
+                                                             VerticalOptions="StartAndExpand" HorizontalOptions="Start"/>
+
+                            </StackLayout>
+                </Frame>
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <material:MaterialLabel  Grid.Column="0" Grid.Row="0" Text="Start Verse"
+                                                HorizontalTextAlignment="Start" VerticalOptions="Center"
+                                                Style="{StaticResource TextMediumStyle}"
+                                                FontFamily="{StaticResource QuranFont}"
+                                                HorizontalOptions="Start" TextColor="Black" FontAttributes="Bold" />
+                        <material:MaterialLabel Grid.Column="1" Grid.Row="0" Text="End Verse"
+                                                HorizontalTextAlignment="Start"
+                                                 VerticalOptions="Center"    Style="{StaticResource TextMediumStyle}"
+                                                FontFamily="{StaticResource QuranFont}" 
+                                                HorizontalOptions="Start" TextColor="Black" FontAttributes="Bold" />
+
+                        <Frame Grid.Row="1" Grid.Column="0" BackgroundColor="Transparent" HasShadow="False"
+                               Padding="0" CornerRadius="2"
+                               BorderColor="#A9AFB6">
+                        <StackLayout BackgroundColor="Transparent" Orientation="Horizontal" Spacing="0"
+                                     HorizontalOptions="FillAndExpand">
+                                    <customcontrols:CustomPicker 
+                                x:Name="pickerStartVerbs"
+                                Title="1"
+                                    Margin="{OnPlatform Android='5,0,0,0'}"
+                                    TitleColor="Black"
+                                    TextColor="Black"
+                                    HorizontalOptions="FillAndExpand"
+                                    BackgroundColor="Transparent"
+                                    FontFamily="{StaticResource QuranFont}"
+                                     Style="{StaticResource TextBodyStyle}"
+                                    ItemsSource="{Binding LvVerse}"
+    
+                                    SelectedItem="{Binding SelectedStartVerse}" >
+
+                                    </customcontrols:CustomPicker>
+
+                                    <material:MaterialIconButton TintColor="Black" PressedBackgroundColor="Transparent"
+                                                                   x:Name="btnDropDownpickerStartVerbs" Clicked="btnDropDownpickerStartVerbs_Clicked"
+                                                                 BackgroundColor="Transparent" Image="dropdown_arrow.png"
+                                                                 VerticalOptions="StartAndExpand" HorizontalOptions="Start"/>
+
+                                </StackLayout>
+                    </Frame>
+
+                        <Frame Grid.Row="1" Grid.Column="1" BackgroundColor="Transparent" HasShadow="False"
+                               Padding="0" BorderColor="#A9AFB6"
+                        CornerRadius="2">
+                        <StackLayout BackgroundColor="Transparent" Orientation="Horizontal" Spacing="0"
+                                     HorizontalOptions="FillAndExpand">
+                                    <customcontrols:CustomPicker HorizontalOptions="FillAndExpand"
+                                x:Name="pickerEndVerbs"
+                                Title="1"
+                                    Margin="{OnPlatform Android='5,0,0,0'}"
+                                    TitleColor="Black"
+                                    TextColor="Black"
+                                    BackgroundColor="Transparent"
+                                    FontFamily="{StaticResource QuranFont}"
+                                     Style="{StaticResource TextBodyStyle}"
+                                    ItemsSource="{Binding LvVerse}"
+                                    SelectedItem="{Binding SelectedEndVerse}" >
+
+                                    </customcontrols:CustomPicker>
+
+                                    <material:MaterialIconButton TintColor="Black" PressedBackgroundColor="Transparent"
+                                                                   x:Name="btnDropDownpickerEndVerbs" Clicked="btnDropDownpickerEndVerbs_Clicked"
+                                                                 BackgroundColor="Transparent" Image="dropdown_arrow.png"
+                                                                 VerticalOptions="StartAndExpand" HorizontalOptions="Start"/>
+
+                                </StackLayout>
+                    </Frame>
+                        
+                    </Grid>
+                    <StackLayout IsVisible="{Binding wordCountVisible}" HorizontalOptions="CenterAndExpand" VerticalOptions="Fill" Orientation="Horizontal">
+                        <material:MaterialLabel   Text="Word Count :"
+                                                 TextColor="#28a745"
+                                                HorizontalTextAlignment="Center" VerticalOptions="Center"
+                                                Style="{StaticResource TextSmallStyle}"
+                                                FontFamily="{StaticResource QuranFont}"
+                                                HorizontalOptions="Start" FontAttributes="Bold" />
+                        <material:MaterialLabel  Text="{Binding totalWordCount}"
+                                                 TextColor="#28a745"
+                                                HorizontalTextAlignment="Center" VerticalOptions="Center"
+                                                Style="{StaticResource TextSmallStyle}"
+                                                FontFamily="{StaticResource QuranFont}"
+                                                HorizontalOptions="Start" FontAttributes="Bold" />
+                    </StackLayout>
+                    <material:MaterialLabel IsVisible="{Binding errorLblVisible}" HorizontalOptions="FillAndExpand"
+                                            Text="{Binding ErrorCountText}"
+                                                 TextColor="#dc3545"
+                                                HorizontalTextAlignment="Center" VerticalOptions="Center"
+                                                Style="{StaticResource TextSmallStyle}"
+                                                FontFamily="{StaticResource QuranFont}"
+                                                 FontAttributes="Bold" />
+                    
+                <!--<Grid>
+                   <Grid.ColumnDefinitions>
+                       <ColumnDefinition Width="40*"/>
+                       <ColumnDefinition Width="20*" />
+                       <ColumnDefinition Width="20*"/>
+                       <ColumnDefinition Width="20*" />
+                   </Grid.ColumnDefinitions>
+                   <Frame Grid.Column="0" Grid.Row="0"  BorderColor="#A9AFB6" HasShadow="False" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand"
+                        CornerRadius="5"  Padding="5" >
+                                            <StackLayout Orientation="Horizontal" Spacing="0"  HorizontalOptions="Center" >
+                                                <material:MaterialLabel Margin="5" Text="From" HorizontalTextAlignment="Start"
+                                                                        Style="{StaticResource TextBodyStyle}" FontFamily="{StaticResource QuranFont}"
+                                                                        VerticalTextAlignment="Center"
+                                                                        HorizontalOptions="Start" TextColor="Black" FontAttributes="Bold" />
+
+                                            </StackLayout>
+                                        </Frame>
+                   <Frame Grid.Column="1" Grid.Row="0" BackgroundColor="#3b5998" HasShadow="False" HorizontalOptions="FillAndExpand"
+                        CornerRadius="5"  Padding="5,0,0,0" >
+                                                <StackLayout Orientation="Horizontal" Spacing="0" HorizontalOptions="CenterAndExpand">
+                                <customcontrols:CustomPicker 
+                            x:Name="pickerFrom"
+                            Title="1"
+                                TitleColor="White"
+                                TextColor="White"
+                                HorizontalOptions="CenterAndExpand"
+                                BackgroundColor="Transparent"
+                                FontFamily="{StaticResource QuranFont}"
+                                FontSize="{OnIdiom Tablet=Large,Phone=Default}"
+                                SelectedIndex="{Binding SelectedIndex}"
+                                ItemsSource="{Binding SubscribeAmount}"
+                                ItemDisplayBinding="{ Binding Name}"
+                                SelectedItem="{Binding LvIndividualAmount}" >
+
+                                </customcontrols:CustomPicker>
+                                <material:MaterialIconButton TintColor="White" PressedBackgroundColor="Transparent"
+                                                               x:Name="btnDropDownpickerFrom"
+                                                             BackgroundColor="Transparent" Image="dropdown_arrow.png"
+                                                             VerticalOptions="StartAndExpand" HorizontalOptions="Start"/>
+
+                            </StackLayout>
+                                        </Frame>
+                   <Frame Grid.Column="2" Grid.Row="0"  BorderColor="#A9AFB6" HasShadow="False" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand"
+                        CornerRadius="5"  Padding="5" >
+                                            <StackLayout Orientation="Horizontal" Spacing="0"  HorizontalOptions="Center" >
+                                                <material:MaterialLabel Margin="5" Text="to" HorizontalTextAlignment="Start"
+                                                                        Style="{StaticResource TextBodyStyle}" FontFamily="{StaticResource QuranFont}" VerticalTextAlignment="Center" HorizontalOptions="Start" TextColor="Black" FontAttributes="Bold" />
+
+                                            </StackLayout>
+                                        </Frame>
+                     <Frame Grid.Column="3" Grid.Row="0" BackgroundColor="#3b5998" HasShadow="False" HorizontalOptions="FillAndExpand"
+                        CornerRadius="5"  Padding="5,0,0,0" >
+                                                <StackLayout Orientation="Horizontal" Spacing="0" HorizontalOptions="CenterAndExpand">
+                                <customcontrols:CustomPicker 
+                            x:Name="pickerTo"
+                            Title="5"
+                                TitleColor="White"
+                                TextColor="White"
+                                HorizontalOptions="CenterAndExpand"
+                                BackgroundColor="Transparent"
+                                FontFamily="{StaticResource QuranFont}"
+                                FontSize="{OnIdiom Tablet=Large,Phone=Default}"
+                                SelectedIndex="{Binding SelectedIndex}"
+                                ItemsSource="{Binding SubscribeAmount}"
+                                ItemDisplayBinding="{ Binding Name}"
+                                SelectedItem="{Binding LvIndividualAmount}" >
+
+                                </customcontrols:CustomPicker>
+                                <material:MaterialIconButton TintColor="White" PressedBackgroundColor="Transparent"
+                                                               x:Name="btnDropDownpickerTo"
+                                                             BackgroundColor="Transparent" Image="dropdown_arrow.png"
+                                                             VerticalOptions="StartAndExpand" HorizontalOptions="Start"/>
+
+                            </StackLayout>
+                                        </Frame>
+               </Grid>-->
+               <!--<Grid>
+                   <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80*"/>
+                                    <ColumnDefinition Width="20*" />
+                                </Grid.ColumnDefinitions>
+                   <Frame Grid.Column="0" Grid.Row="0"  BorderColor="#A9AFB6" HasShadow="False" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand"
+                        CornerRadius="5"  Padding="5" >
+                                            <StackLayout Orientation="Horizontal" Spacing="0"  HorizontalOptions="FillAndExpand" >
+                                                <material:MaterialLabel Margin="5" Text="English to Arabic" HorizontalTextAlignment="Start"
+                                                                        Style="{StaticResource TextBodyStyle}" FontFamily="{StaticResource QuranFont}" VerticalTextAlignment="Center" HorizontalOptions="Start" TextColor="Black" FontAttributes="Bold" />
+
+                                            </StackLayout>
+                                        </Frame>
+                   <Frame Grid.Column="1" Grid.Row="0" BackgroundColor="#3b5998" HasShadow="False" HorizontalOptions="FillAndExpand"
+                        CornerRadius="5"  Padding="5" >
+                                            <StackLayout Orientation="Horizontal" Spacing="0"  HorizontalOptions="Center" >
+                                                <material:MaterialLabel Margin="5" Text="OFF" HorizontalTextAlignment="Center"
+                                                                        TextColor="White"
+                                                                        Style="{StaticResource TextBodyStyle}"
+                                                                        FontFamily="{StaticResource QuranFont}"
+                                                                        VerticalTextAlignment="Center" HorizontalOptions="Start"
+                                                                        FontAttributes="Bold" />
+                                            </StackLayout>
+                                        </Frame>
+                    <Frame Grid.Column="0" Grid.Row="1" BorderColor="#A9AFB6" HasShadow="False" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand"
+                        CornerRadius="5"  Padding="5" >
+                                            <StackLayout Orientation="Horizontal" Spacing="0"  HorizontalOptions="FillAndExpand" >
+                                                <material:MaterialLabel Margin="5" Text="Shuffle" HorizontalTextAlignment="Start"
+                                                                        Style="{StaticResource TextBodyStyle}" FontFamily="{StaticResource QuranFont}" VerticalTextAlignment="Center" HorizontalOptions="Start" TextColor="Black" FontAttributes="Bold" />
+
+                                            </StackLayout>
+                                        </Frame>
+                   <Frame Grid.Column="1" Grid.Row="1" BackgroundColor="#3b5998" HasShadow="False" HorizontalOptions="FillAndExpand"
+                        CornerRadius="5"  Padding="5" >
+                                            <StackLayout Orientation="Horizontal" Spacing="0"  HorizontalOptions="Center" >
+                                                <material:MaterialLabel Margin="5" Text="ON" HorizontalTextAlignment="Center"
+                                                                        TextColor="White"
+                                                                        Style="{StaticResource TextBodyStyle}"
+                                                                        FontFamily="{StaticResource QuranFont}"
+                                                                        VerticalTextAlignment="Center" HorizontalOptions="Start"
+                                                                        FontAttributes="Bold" />
+                                            </StackLayout>
+                                        </Frame>
+                   
+               </Grid>-->
+                   <material:MaterialLabel  Text="Language"
+                                                HorizontalTextAlignment="Start"
+                                                    Style="{StaticResource TextMediumStyle}"
+                                                FontFamily="{StaticResource QuranFont}" 
+                                                HorizontalOptions="Start" TextColor="Black" FontAttributes="Bold" /> 
+                    <Frame BackgroundColor="Transparent" HasShadow="False" Padding="0" BorderColor="#A9AFB6"
+                        CornerRadius="2">
+                    <StackLayout BackgroundColor="Transparent" Orientation="Horizontal" Spacing="0"
+                                 HorizontalOptions="FillAndExpand">
+                                <customcontrols:CustomPicker 
+                            x:Name="LanguagePicker"
+                            Title="Select Language"
+                                Margin="{OnPlatform Android='5,0,0,0'}"
+                                TitleColor="Black"
+                                TextColor="Black"
+                                HorizontalOptions="FillAndExpand"
+                                BackgroundColor="Transparent"
+                                FontFamily="{StaticResource QuranFont}"
+                                 Style="{StaticResource TextBodyStyle}"
+                                SelectedIndex="{Binding SelectedLanguageIndex}"
+                                ItemsSource="{Binding LvLanguage}"
+                                SelectedItem="{Binding LvLanguageSelected}" >
+
+                                </customcontrols:CustomPicker>
+
+                                <material:MaterialIconButton TintColor="Black" PressedBackgroundColor="Transparent"
+                                                               x:Name="btnDropDownLanguagePicker" Clicked="btnDropDownLanguagePicker_Clicked"
+                                                             BackgroundColor="Transparent" Image="dropdown_arrow.png"
+                                                             VerticalOptions="StartAndExpand" HorizontalOptions="Start"/>
+
+                            </StackLayout>
+                </Frame>
+
+                <ListView x:Name="QuizzesList"
+                              IsVisible="{Binding IsQuizzesList}"
+                      ios:ListView.RowAnimationsEnabled="false"
+                              VerticalScrollBarVisibility="Never"
+                      VerticalOptions="CenterAndExpand"
+                      HorizontalOptions="FillAndExpand"
+                      SelectionMode="None"
+                      BackgroundColor="Transparent"
+                      HasUnevenRows="true"
+                      HeightRequest="{Binding QuizzesTypesHeight}"
+                      ItemsSource="{Binding QuizzesTypes}"
+                      SeparatorVisibility="None" >
+                        <ListView.ItemTemplate >
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Spacing="0">
+                                    <StackLayout Orientation="Horizontal" Spacing="0" Margin="0,5,0,0" IsVisible="{Binding IsVisibles}" >
+                                        <Frame  BorderColor="#A9AFB6" HasShadow="False" BackgroundColor="Transparent"
+                                                HorizontalOptions="FillAndExpand" CornerRadius="2"  Padding="5" >
+                                            <StackLayout Orientation="Horizontal" Spacing="0"  HorizontalOptions="FillAndExpand" >
+
+                                                <material:MaterialLabel Margin="5" Text="{Binding Name}" HorizontalTextAlignment="Start"
+                                                                        Style="{StaticResource TextBodyStyle}"
+                                                                        FontFamily="{StaticResource QuranFont}"
+                                                                        VerticalTextAlignment="Center" HorizontalOptions="Start"
+                                                                        TextColor="Black" FontAttributes="Bold" />
+
+                                                <Image Source="Quizzesinfo.png" WidthRequest="20" HeightRequest="20" Margin="0,0,0,0" HorizontalOptions="Start" VerticalOptions="CenterAndExpand">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer
+                                                            Command="{Binding Path=BindingContext.InfoClickCommand, Source={x:Reference QuizzesList}}"
+                                                            CommandParameter="{Binding .}"/>
+                                                    </Image.GestureRecognizers>
+                                                </Image>
+                                            </StackLayout>
+
+                                        </Frame>
+                                        <Frame HasShadow="False" CornerRadius="2" BackgroundColor="{Binding BackgroundColor}" Padding="5" >
+                                            <StackLayout Orientation="Horizontal" Spacing="0"  HorizontalOptions="FillAndExpand" >
+
+                                                <material:MaterialIcon Margin="5" Source="{Binding IconImage}" TintColor="White" HorizontalOptions="CenterAndExpand"  />
+                                            </StackLayout>
+                                             <Frame.GestureRecognizers>
+                                                        <TapGestureRecognizer
+                                                            Command="{Binding Path=BindingContext.SelectedQuizes, Source={x:Reference QuizzesList}}"
+                                                            CommandParameter="{Binding .}"/>
+                                                    </Frame.GestureRecognizers>
+                                        </Frame>
+                                        
+                                       
+                                    </StackLayout>
+                                    <!--<Label Text="{Binding LblNote}" TextColor="#5bc0de" HorizontalTextAlignment="Center" FontFamily="{StaticResource QuranFontBold}" FontSize="Small" IsVisible="{Binding IsEnables}"/>-->
+                                        </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+
+                    </ListView>
+                
+
+                    </StackLayout>
+                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Fill" Orientation="Horizontal">
+                        <material:MaterialLabel   Text="{Binding LeftSideLanguage}"
+                                                 TextColor="#5bc0de"
+                                                HorizontalTextAlignment="Center" VerticalOptions="Center"
+                                                Style="{StaticResource TextBodyStyle}"
+                                                FontFamily="{StaticResource QuranFont}"
+                                                HorizontalOptions="Start" FontAttributes="Bold" />
+                    <material:MaterialLabel  Text="to"
+                                                 TextColor="Black"
+                                                HorizontalTextAlignment="Center" VerticalOptions="Center"
+                                                Style="{StaticResource TextBodyStyle}"
+                                                FontFamily="{StaticResource QuranFont}"
+                                                HorizontalOptions="Start" FontAttributes="Bold" />
+                        <material:MaterialLabel  Text="{Binding RightSideLanguage}"
+                                                 TextColor="#17a2b8"
+                                                HorizontalTextAlignment="Center" VerticalOptions="Center"
+                                                Style="{StaticResource TextBodyStyle}"
+                                                FontFamily="{StaticResource QuranFont}"
+                                                HorizontalOptions="Start" FontAttributes="Bold" />
+                    </StackLayout>
+                <Grid>
+                    <material:MaterialButton Grid.Column="0" CornerRadius="10" Command="{Binding GenrateCommmand}"
+                                             Padding="10"
+                                             Style="{StaticResource FlipBottomButtonStyle}"
+                                             BackgroundColor="#17a2b8" FontFamily="{StaticResource QuranFontBold}"
+                                             AllCaps="False" Margin="5,0,0,0" Text="Start" />
+                    <material:MaterialButton Grid.Column="1" CornerRadius="10" Command="{Binding CloseQuizze}"
+                                             Padding="10" Style="{StaticResource FlipBottomButtonStyle}"
+                                             BackgroundColor="#868e96" Margin="0,0,5,0"
+                                             FontFamily="{StaticResource QuranFontBold}" AllCaps="False"
+                                              Text="Close" />
+           
+                </Grid>
+                
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
